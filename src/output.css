@@ -1714,9 +1714,6 @@
     --tw-outline-style: solid;
     outline-style: solid;
   }
-  .\[keywords\:node-addon-api\] {
-    keywords: node-addon-api;
-  }
   .backface-hidden {
     backface-visibility: hidden;
   }
