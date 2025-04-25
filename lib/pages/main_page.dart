@@ -1,5 +1,3 @@
-import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
-import 'package:final_project_pengaduan_masyarakat_sem2/extentions/build_context_ext.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {

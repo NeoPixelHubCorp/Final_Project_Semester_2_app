@@ -1,0 +1,2 @@
+C:/Final_Project_Semester_2_app/android/app/.cxx/Debug/2r5s474v/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Final_Project_Semester_2_app/android/app/.cxx/Debug/2r5s474v/armeabi-v7a/CMakeFiles/rebuild_cache.dir

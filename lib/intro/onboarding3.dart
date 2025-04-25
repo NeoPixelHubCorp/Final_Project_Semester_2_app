@@ -28,6 +28,7 @@ class _LaporanScreenState extends State<LaporanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -77,14 +78,10 @@ class _LaporanScreenState extends State<LaporanScreen> {
                     ),
                   ),
                   onPressed: () {
-                    // Aksi saat diklik
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => LoginPage()));
-                    // aksi saat tombol ditekan
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Mulai sekarang diklik!'),
-                      ),
+                    // Pastikan tidak melakukan navigasi ganda atau loop
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const LoginPage()),
                     );
                   },
                   child: const Text(
@@ -93,7 +90,7 @@ class _LaporanScreenState extends State<LaporanScreen> {
                       fontSize: 16,
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
-                      letterSpacing: 1.5,
+                      letterSpacing: 1,
                     ),
                   ),
                 ),

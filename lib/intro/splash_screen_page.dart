@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:final_project_pengaduan_masyarakat_sem2/intro/onboarding1.dart';
 import 'package:flutter/material.dart';
-import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
 
 class SplashScreen extends StatefulWidget {
