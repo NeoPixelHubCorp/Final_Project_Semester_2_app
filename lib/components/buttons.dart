@@ -1,4 +1,4 @@
-import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/constants/color.dart';
 import 'package:flutter/material.dart';
 
 enum ButtonStyleType { filled, outlined }
@@ -9,7 +9,7 @@ class Button extends StatelessWidget {
     required this.onPressed,
     required this.label,
     this.style = ButtonStyleType.filled,
-    this.color = AppColor.dodgerBlue,
+    this.color = AppColor.primary,
     this.textColor = Colors.white,
     this.width = double.infinity,
     this.height = 60.0,
@@ -26,7 +26,7 @@ class Button extends StatelessWidget {
     required this.label,
     this.style = ButtonStyleType.outlined,
     this.color = Colors.transparent,
-    this.textColor = AppColor.dodgerBlue,
+    this.textColor = AppColor.primary,
     this.width = double.infinity,
     this.height = 60.0,
     this.borderRadius = 10.0,
@@ -87,7 +87,7 @@ class Button extends StatelessWidget {
               onPressed: disabled ? null : onPressed,
               style: OutlinedButton.styleFrom(
                 backgroundColor: color,
-                side: const BorderSide(color: AppColor.lightGray),
+                side: const BorderSide(color: AppColor.navInActive),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(borderRadius),
                 ),

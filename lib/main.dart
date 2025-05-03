@@ -1,7 +1,9 @@
 import 'package:final_project_pengaduan_masyarakat_sem2/auth/bloc/login/login_bloc.dart';
-import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/constants/color.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/dataSources/auth_remote_datasource.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/intro/splash_screen_page.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/pages/main_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,13 +23,12 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: AppColor.dodgerBlue),
-        ),
-        home: SplashScreen(), // <- Tambahkan ini
-      ),
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primary),
+          ),
+          home: MainPage()),
     );
   }
 }

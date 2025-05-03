@@ -16,12 +16,12 @@ class Onboarding1 extends StatelessWidget {
           children: [
             // Gambar ilustrasi
             Image.asset(
-              'assets/onboarding.png', // ganti dengan path asset kamu
+              'assets/images/onboarding.png', // ganti dengan path asset kamu
               width: 242,
               height: 176,
               fit: BoxFit.contain,
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
 
             // Judul
             const Text(
@@ -43,7 +43,22 @@ class Onboarding1 extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 60),
+
+            const SizedBox(height: 32),
+
+            // Indicator
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildIndicator(true),
+                const SizedBox(width: 8),
+                _buildIndicator(false),
+                const SizedBox(width: 8),
+                _buildIndicator(false),
+              ],
+            ),
+
+            const SizedBox(height: 100),
 
             // Tombol
             Row(
@@ -52,9 +67,10 @@ class Onboarding1 extends StatelessWidget {
                 // Tombol Lewati
                 OutlinedButton(
                   onPressed: () {
-                    // Aksi saat diklik
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => LoginPage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const LoginPage()),
+                    );
                   },
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
@@ -80,7 +96,7 @@ class Onboarding1 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Onboarding2()),
+                      MaterialPageRoute(builder: (_) => const Onboarding2()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -105,6 +121,17 @@ class Onboarding1 extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildIndicator(bool isActive) {
+    return Container(
+      width: isActive ? 24 : 12,
+      height: 6,
+      decoration: BoxDecoration(
+        color: isActive ? Colors.blue : Colors.grey.shade300,
+        borderRadius: BorderRadius.circular(3),
       ),
     );
   }
