@@ -1,5 +1,5 @@
 import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
-import 'package:final_project_pengaduan_masyarakat_sem2/intro/onboarding2.dart';
+// import 'package:final_project_pengaduan_masyarakat_sem2/intro/onboarding2.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/intro/onboarding3.dart';
 import 'package:flutter/material.dart';
 

@@ -12,6 +12,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRemoteDatasource authRemoteDataSource;
   LoginBloc(this.authRemoteDataSource) : super(_Initial()) {
     on<_Login>((event, emit) async {
+      // karena pengambilan data dari API membutuhkan beberapa waktu, kita tampilkan UI loading supaya User tau datanya lagi diambilin
       emit(_Loading());
       final dataRequest = LoginRequestModel(
         email: event.email,

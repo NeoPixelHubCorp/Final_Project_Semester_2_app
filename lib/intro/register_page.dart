@@ -1,6 +1,1485 @@
+// // // import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+// // // import 'package:flutter/gestures.dart';
+// // // import 'package:flutter/material.dart';
+
+// // // class RegisterPage extends StatefulWidget {
+// // //   const RegisterPage({super.key});
+
+// // //   @override
+// // //   State<RegisterPage> createState() => _RegisterPageState();
+// // // }
+
+// // // class _RegisterPageState extends State<RegisterPage> {
+// // //   final TextEditingController _nameController = TextEditingController();
+// // //   final TextEditingController _emailController = TextEditingController();
+// // //   final TextEditingController _passwordController = TextEditingController();
+// // //   final TextEditingController _confirmPasswordController =
+// // //       TextEditingController();
+
+// // //   bool _obscurePassword = true;
+// // //   bool _obscureConfirmPassword = true;
+// // //   bool _isPasswordValid = false;
+// // //   bool _isButtonActive = false;
+
+// // //   @override
+// // //   void initState() {
+// // //     super.initState();
+// // //     _nameController.addListener(_validateForm);
+// // //     _emailController.addListener(_validateForm);
+// // //     _passwordController.addListener(_validateForm);
+// // //     _confirmPasswordController.addListener(_validateForm);
+// // //     _passwordController.addListener(_validatePassword);
+// // //   }
+
+// // //   void _validateForm() {
+// // //     setState(() {
+// // //       _isButtonActive = _nameController.text.isNotEmpty &&
+// // //           _emailController.text.isNotEmpty &&
+// // //           _passwordController.text.isNotEmpty &&
+// // //           _confirmPasswordController.text.isNotEmpty;
+// // //     });
+// // //   }
+
+// // //   void _validatePassword() {
+// // //     setState(() {
+// // //       _isPasswordValid = _passwordController.text.length >= 8;
+// // //     });
+// // //   }
+
+// // //   @override
+// // //   void dispose() {
+// // //     _nameController.dispose();
+// // //     _emailController.dispose();
+// // //     _passwordController.dispose();
+// // //     _confirmPasswordController.dispose();
+// // //     super.dispose();
+// // //   }
+
+// // //   @override
+// // //   Widget build(BuildContext context) {
+// // //     return Scaffold(
+// // //       body: SafeArea(
+// // //         child: SingleChildScrollView(
+// // //           child: Column(
+// // //             crossAxisAlignment: CrossAxisAlignment.start,
+// // //             children: [
+// // //               Container(
+// // //                 width: double.infinity,
+// // //                 height: 150,
+// // //                 decoration: const BoxDecoration(
+// // //                   color: Colors.blue,
+// // //                   borderRadius: BorderRadius.only(
+// // //                     bottomRight: Radius.circular(390),
+// // //                   ),
+// // //                 ),
+// // //                 padding: const EdgeInsets.only(top: 60, left: 20),
+// // //                 alignment: Alignment.topLeft,
+// // //                 child: Image.asset(
+// // //                   'assets/Logoo.png',
+// // //                   width: 111,
+// // //                   height: 50,
+// // //                 ),
+// // //               ),
+// // //               Padding(
+// // //                 padding:
+// // //                     const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+// // //                 child: Column(
+// // //                   crossAxisAlignment: CrossAxisAlignment.start,
+// // //                   children: [
+// // //                     const Text(
+// // //                       'Daftar Akun',
+// // //                       style: TextStyle(
+// // //                         fontSize: 20,
+// // //                         fontWeight: FontWeight.bold,
+// // //                         color: Colors.black,
+// // //                       ),
+// // //                     ),
+// // //                     const SizedBox(height: 24),
+// // //                     const Text('Nama Lengkap',
+// // //                         style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// // //                     const SizedBox(height: 8),
+// // //                     TextField(
+// // //                       controller: _nameController,
+// // //                       decoration: InputDecoration(
+// // //                         border: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                         ),
+// // //                         focusedBorder: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                           borderSide:
+// // //                               const BorderSide(color: Colors.blue, width: 2),
+// // //                         ),
+// // //                       ),
+// // //                     ),
+// // //                     const SizedBox(height: 20),
+// // //                     const Text('Alamat e-mail',
+// // //                         style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// // //                     const SizedBox(height: 8),
+// // //                     TextField(
+// // //                       controller: _emailController,
+// // //                       decoration: InputDecoration(
+// // //                         border: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                         ),
+// // //                         focusedBorder: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                           borderSide:
+// // //                               const BorderSide(color: Colors.blue, width: 2),
+// // //                         ),
+// // //                       ),
+// // //                     ),
+// // //                     const SizedBox(height: 20),
+// // //                     const Text('Kata sandi',
+// // //                         style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// // //                     const SizedBox(height: 8),
+// // //                     TextField(
+// // //                       controller: _passwordController,
+// // //                       obscureText: _obscurePassword,
+// // //                       decoration: InputDecoration(
+// // //                         border: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                         ),
+// // //                         focusedBorder: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                           borderSide:
+// // //                               const BorderSide(color: Colors.blue, width: 2),
+// // //                         ),
+// // //                         suffixIcon: IconButton(
+// // //                           icon: Image.asset(
+// // //                             _obscurePassword
+// // //                                 ? 'assets/hide.png'
+// // //                                 : 'assets/show.png',
+// // //                             width: 24,
+// // //                             height: 24,
+// // //                           ),
+// // //                           onPressed: () {
+// // //                             setState(() {
+// // //                               _obscurePassword = !_obscurePassword;
+// // //                             });
+// // //                           },
+// // //                         ),
+// // //                       ),
+// // //                     ),
+// // //                     const SizedBox(height: 4),
+// // //                     Row(
+// // //                       children: [
+// // //                         SizedBox(
+// // //                           width: 24,
+// // //                           height: 24,
+// // //                           child: Checkbox(
+// // //                             value: _isPasswordValid,
+// // //                             onChanged: null,
+// // //                             activeColor: Colors.blue,
+// // //                           ),
+// // //                         ),
+// // //                         const SizedBox(width: 8),
+// // //                         const Text(
+// // //                           'Kata sandi harus berisi minimal 8 karakter',
+// // //                           style: TextStyle(fontSize: 12, color: AppColor.gray),
+// // //                         ),
+// // //                       ],
+// // //                     ),
+// // //                     const SizedBox(height: 20),
+// // //                     const Text('Konfirmasi kata sandi',
+// // //                         style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// // //                     const SizedBox(height: 8),
+// // //                     TextField(
+// // //                       controller: _confirmPasswordController,
+// // //                       obscureText: _obscureConfirmPassword,
+// // //                       decoration: InputDecoration(
+// // //                         border: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                         ),
+// // //                         focusedBorder: OutlineInputBorder(
+// // //                           borderRadius: BorderRadius.circular(12),
+// // //                           borderSide:
+// // //                               const BorderSide(color: Colors.blue, width: 2),
+// // //                         ),
+// // //                         suffixIcon: IconButton(
+// // //                           icon: Image.asset(
+// // //                             _obscureConfirmPassword
+// // //                                 ? 'assets/hide.png'
+// // //                                 : 'assets/show.png',
+// // //                             width: 24,
+// // //                             height: 24,
+// // //                           ),
+// // //                           onPressed: () {
+// // //                             setState(() {
+// // //                               _obscureConfirmPassword =
+// // //                                   !_obscureConfirmPassword;
+// // //                             });
+// // //                           },
+// // //                         ),
+// // //                       ),
+// // //                     ),
+// // //                     const SizedBox(height: 40),
+// // //                     SizedBox(
+// // //                       width: double.infinity,
+// // //                       height: 50,
+// // //                       child: ElevatedButton(
+// // //                         onPressed: _isButtonActive ? () {} : null,
+// // //                         style: ElevatedButton.styleFrom(
+// // //                           backgroundColor:
+// // //                               _isButtonActive ? Colors.blue : Colors.grey,
+// // //                           shape: RoundedRectangleBorder(
+// // //                             borderRadius: BorderRadius.circular(12),
+// // //                           ),
+// // //                         ),
+// // //                         child: const Text(
+// // //                           'Daftar',
+// // //                           style: TextStyle(
+// // //                             fontWeight: FontWeight.bold,
+// // //                             color: Colors.white,
+// // //                           ),
+// // //                         ),
+// // //                       ),
+// // //                     ),
+// // //                     const SizedBox(height: 24),
+// // //                     Center(
+// // //                       child: RichText(
+// // //                         text: TextSpan(
+// // //                           text: 'Sudah punya akun? ',
+// // //                           style: const TextStyle(color: Colors.black),
+// // //                           children: [
+// // //                             TextSpan(
+// // //                               text: 'Masuk',
+// // //                               style: const TextStyle(
+// // //                                   color: Colors.blue,
+// // //                                   fontWeight: FontWeight.bold),
+// // //                               recognizer: TapGestureRecognizer()
+// // //                                 ..onTap = () {
+// // //                                   Navigator.pop(context);
+// // //                                 },
+// // //                             ),
+// // //                           ],
+// // //                         ),
+// // //                       ),
+// // //                     ),
+// // //                     const SizedBox(height: 32),
+// // //                   ],
+// // //                 ),
+// // //               ),
+// // //             ],
+// // //           ),
+// // //         ),
+// // //       ),
+// // //     );
+// // //   }
+// // // }
+// // import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+// // import 'package:flutter/gestures.dart';
+// // import 'package:flutter/material.dart';
+// // import 'package:flutter_bloc/flutter_bloc.dart';
+// // import 'package:final_project_pengaduan_masyarakat_sem2/auth/bloc/register/register_bloc.dart';
+
+// // class RegisterPage extends StatefulWidget {
+// //   const RegisterPage({super.key});
+
+// //   @override
+// //   State<RegisterPage> createState() => _RegisterPageState();
+// // }
+
+// // class _RegisterPageState extends State<RegisterPage> {
+// //   final TextEditingController _nameController = TextEditingController();
+// //   final TextEditingController _emailController = TextEditingController();
+// //   final TextEditingController _passwordController = TextEditingController();
+// //   final TextEditingController _confirmPasswordController = TextEditingController();
+
+// //   bool _obscurePassword = true;
+// //   bool _obscureConfirmPassword = true;
+// //   bool _isPasswordValid = false;
+// //   bool _isButtonActive = false;
+
+// //   @override
+// //   void initState() {
+// //     super.initState();
+// //     _nameController.addListener(_validateForm);
+// //     _emailController.addListener(_validateForm);
+// //     _passwordController.addListener(_validateForm);
+// //     _confirmPasswordController.addListener(_validateForm);
+// //     _passwordController.addListener(_validatePassword);
+// //   }
+
+// //   void _validateForm() {
+// //     setState(() {
+// //       _isButtonActive = _nameController.text.isNotEmpty &&
+// //           _emailController.text.isNotEmpty &&
+// //           _passwordController.text.isNotEmpty &&
+// //           _confirmPasswordController.text.isNotEmpty;
+// //     });
+// //   }
+
+// //   void _validatePassword() {
+// //     setState(() {
+// //       _isPasswordValid = _passwordController.text.length >= 8;
+// //     });
+// //   }
+
+// //   @override
+// //   void dispose() {
+// //     _nameController.dispose();
+// //     _emailController.dispose();
+// //     _passwordController.dispose();
+// //     _confirmPasswordController.dispose();
+// //     super.dispose();
+// //   }
+
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Scaffold(
+// //       body: SafeArea(
+// //         child: BlocListener<RegisterBloc, RegisterState>(
+// //           listener: (context, state) {
+// //             state.whenOrNull(
+// //               loading: () => showDialog(
+// //                 context: context,
+// //                 barrierDismissible: false,
+// //                 builder: (_) => const Center(child: CircularProgressIndicator()),
+// //               ),
+// //               success: () {
+// //                 Navigator.pop(context); // close loading
+// //                 ScaffoldMessenger.of(context).showSnackBar(
+// //                   const SnackBar(content: Text("Pendaftaran berhasil")),
+// //                 );
+// //                 Navigator.pop(context); // return to login
+// //               },
+// //               error: (message) {
+// //                 Navigator.pop(context); // close loading
+// //                 ScaffoldMessenger.of(context).showSnackBar(
+// //                   SnackBar(content: Text(message)),
+// //                 );
+// //               },
+// //             );
+// //           },
+// //           child: SingleChildScrollView(
+// //             child: Column(
+// //               crossAxisAlignment: CrossAxisAlignment.start,
+// //               children: [
+// //                 Container(
+// //                   width: double.infinity,
+// //                   height: 150,
+// //                   decoration: const BoxDecoration(
+// //                     color: Colors.blue,
+// //                     borderRadius: BorderRadius.only(
+// //                       bottomRight: Radius.circular(390),
+// //                     ),
+// //                   ),
+// //                   padding: const EdgeInsets.only(top: 60, left: 20),
+// //                   alignment: Alignment.topLeft,
+// //                   child: Image.asset(
+// //                     'assets/Logoo.png',
+// //                     width: 111,
+// //                     height: 50,
+// //                   ),
+// //                 ),
+// //                 Padding(
+// //                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+// //                   child: Column(
+// //                     crossAxisAlignment: CrossAxisAlignment.start,
+// //                     children: [
+// //                       const Text(
+// //                         'Daftar Akun',
+// //                         style: TextStyle(
+// //                           fontSize: 20,
+// //                           fontWeight: FontWeight.bold,
+// //                           color: Colors.black,
+// //                         ),
+// //                       ),
+// //                       const SizedBox(height: 24),
+
+// //                       const Text('Nama Lengkap', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// //                       const SizedBox(height: 8),
+// //                       TextField(
+// //                         controller: _nameController,
+// //                         decoration: InputDecoration(
+// //                           border: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                           ),
+// //                           focusedBorder: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+// //                           ),
+// //                         ),
+// //                       ),
+
+// //                       const SizedBox(height: 20),
+
+// //                       const Text('Alamat e-mail', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// //                       const SizedBox(height: 8),
+// //                       TextField(
+// //                         controller: _emailController,
+// //                         decoration: InputDecoration(
+// //                           border: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                           ),
+// //                           focusedBorder: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+// //                           ),
+// //                         ),
+// //                       ),
+
+// //                       const SizedBox(height: 20),
+
+// //                       const Text('Kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// //                       const SizedBox(height: 8),
+// //                       TextField(
+// //                         controller: _passwordController,
+// //                         obscureText: _obscurePassword,
+// //                         decoration: InputDecoration(
+// //                           border: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                           ),
+// //                           focusedBorder: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+// //                           ),
+// //                           suffixIcon: IconButton(
+// //                             icon: Image.asset(
+// //                               _obscurePassword ? 'assets/hide.png' : 'assets/show.png',
+// //                               width: 24,
+// //                               height: 24,
+// //                             ),
+// //                             onPressed: () {
+// //                               setState(() {
+// //                                 _obscurePassword = !_obscurePassword;
+// //                               });
+// //                             },
+// //                           ),
+// //                         ),
+// //                       ),
+
+// //                       const SizedBox(height: 4),
+// //                       Row(
+// //                         children: [
+// //                           SizedBox(
+// //                             width: 24,
+// //                             height: 24,
+// //                             child: Checkbox(
+// //                               value: _isPasswordValid,
+// //                               onChanged: null,
+// //                               activeColor: Colors.blue,
+// //                             ),
+// //                           ),
+// //                           const SizedBox(width: 8),
+// //                           const Text(
+// //                             'Kata sandi harus berisi minimal 8 karakter',
+// //                             style: TextStyle(fontSize: 12, color: AppColor.gray),
+// //                           ),
+// //                         ],
+// //                       ),
+
+// //                       const SizedBox(height: 20),
+
+// //                       const Text('Konfirmasi kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+// //                       const SizedBox(height: 8),
+// //                       TextField(
+// //                         controller: _confirmPasswordController,
+// //                         obscureText: _obscureConfirmPassword,
+// //                         decoration: InputDecoration(
+// //                           border: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                           ),
+// //                           focusedBorder: OutlineInputBorder(
+// //                             borderRadius: BorderRadius.circular(12),
+// //                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+// //                           ),
+// //                           suffixIcon: IconButton(
+// //                             icon: Image.asset(
+// //                               _obscureConfirmPassword ? 'assets/hide.png' : 'assets/show.png',
+// //                               width: 24,
+// //                               height: 24,
+// //                             ),
+// //                             onPressed: () {
+// //                               setState(() {
+// //                                 _obscureConfirmPassword = !_obscureConfirmPassword;
+// //                               });
+// //                             },
+// //                           ),
+// //                         ),
+// //                       ),
+
+// //                       const SizedBox(height: 40),
+
+// //                       SizedBox(
+// //                         width: double.infinity,
+// //                         height: 50,
+// //                         child: ElevatedButton(
+// //                           onPressed: _isButtonActive
+// //                               ? () {
+// //                                   context.read<RegisterBloc>().add(
+// //                                         RegisterEvent.submitted(
+// //                                           name: _nameController.text,
+// //                                           email: _emailController.text,
+// //                                           password: _passwordController.text,
+// //                                           confirmPassword: _confirmPasswordController.text,
+// //                                         ),
+// //                                       );
+// //                                 }
+// //                               : null,
+// //                           style: ElevatedButton.styleFrom(
+// //                             backgroundColor: _isButtonActive ? Colors.blue : Colors.grey,
+// //                             shape: RoundedRectangleBorder(
+// //                               borderRadius: BorderRadius.circular(12),
+// //                             ),
+// //                           ),
+// //                           child: const Text(
+// //                             'Daftar',
+// //                             style: TextStyle(
+// //                               fontWeight: FontWeight.bold,
+// //                               color: Colors.white,
+// //                             ),
+// //                           ),
+// //                         ),
+// //                       ),
+
+// //                       const SizedBox(height: 24),
+
+// //                       Center(
+// //                         child: RichText(
+// //                           text: TextSpan(
+// //                             text: 'Sudah punya akun? ',
+// //                             style: const TextStyle(color: Colors.black),
+// //                             children: [
+// //                               TextSpan(
+// //                                 text: 'Masuk',
+// //                                 style: const TextStyle(
+// //                                     color: Colors.blue,
+// //                                     fontWeight: FontWeight.bold),
+// //                                 recognizer: TapGestureRecognizer()
+// //                                   ..onTap = () {
+// //                                     Navigator.pop(context);
+// //                                   },
+// //                               ),
+// //                             ],
+// //                           ),
+// //                         ),
+// //                       ),
+// //                       const SizedBox(height: 32),
+// //                     ],
+// //                   ),
+// //                 ),
+// //               ],
+// //             ),
+// //           ),
+// //         ),
+// //       ),
+// //     );
+// //   }
+// // }
+// import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+// import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
+// import 'package:flutter/gestures.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:final_project_pengaduan_masyarakat_sem2/auth/bloc/register/register_bloc.dart';
+
+// class RegisterPage extends StatefulWidget {
+//   const RegisterPage({super.key});
+
+//   @override
+//   State<RegisterPage> createState() => _RegisterPageState();
+// }
+
+// class _RegisterPageState extends State<RegisterPage> {
+//   final TextEditingController _nameController = TextEditingController();
+//   final TextEditingController _emailController = TextEditingController();
+//   final TextEditingController _passwordController = TextEditingController();
+//   final TextEditingController _confirmPasswordController = TextEditingController();
+
+//   bool _obscurePassword = true;
+//   bool _obscureConfirmPassword = true;
+//   bool _isPasswordValid = false;
+//   bool _isButtonActive = false;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _nameController.addListener(_validateForm);
+//     _emailController.addListener(_validateForm);
+//     _passwordController.addListener(_validateForm);
+//     _confirmPasswordController.addListener(_validateForm);
+//     _passwordController.addListener(_validatePassword);
+//   }
+
+//   void _validateForm() {
+//     setState(() {
+//       _isButtonActive = _nameController.text.isNotEmpty &&
+//           _emailController.text.isNotEmpty &&
+//           _passwordController.text.isNotEmpty &&
+//           _confirmPasswordController.text.isNotEmpty;
+//     });
+//   }
+
+//   void _validatePassword() {
+//     setState(() {
+//       _isPasswordValid = _passwordController.text.length >= 8;
+//     });
+//   }
+
+//   @override
+//   void dispose() {
+//     _nameController.dispose();
+//     _emailController.dispose();
+//     _passwordController.dispose();
+//     _confirmPasswordController.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: BlocListener<RegisterBloc, RegisterState>(
+//           listener: (context, state) {
+//             state.whenOrNull(
+//               loading: () => showDialog(
+//                 context: context,
+//                 barrierDismissible: false,
+//                 builder: (_) => const Center(child: CircularProgressIndicator()),
+//               ),
+//               success: () {
+//                 Navigator.pop(context); // close loading
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   const SnackBar(content: Text("Pendaftaran berhasil")),
+//                 );
+//                 Navigator.pushReplacement(
+//                   context,
+//                   MaterialPageRoute(builder: (_) => const LoginPage()),
+//                 );
+//               },
+//               error: (message) {
+//                 Navigator.pop(context); // close loading
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   SnackBar(content: Text(message)),
+//                 );
+//               },
+//             );
+//           },
+//           child: SingleChildScrollView(
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Container(
+//                   width: double.infinity,
+//                   height: 150,
+//                   decoration: const BoxDecoration(
+//                     color: Colors.blue,
+//                     borderRadius: BorderRadius.only(
+//                       bottomRight: Radius.circular(390),
+//                     ),
+//                   ),
+//                   padding: const EdgeInsets.only(top: 60, left: 20),
+//                   alignment: Alignment.topLeft,
+//                   child: Image.asset(
+//                     'assets/Logoo.png',
+//                     width: 111,
+//                     height: 50,
+//                   ),
+//                 ),
+//                 Padding(
+//                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       const Text(
+//                         'Daftar Akun',
+//                         style: TextStyle(
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.bold,
+//                           color: Colors.black,
+//                         ),
+//                       ),
+//                       const SizedBox(height: 24),
+
+//                       const Text('Nama Lengkap', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _nameController,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 20),
+
+//                       const Text('Alamat e-mail', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _emailController,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 20),
+
+//                       const Text('Kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _passwordController,
+//                         obscureText: _obscurePassword,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                           suffixIcon: IconButton(
+//                             icon: Image.asset(
+//                               _obscurePassword ? 'assets/hide.png' : 'assets/show.png',
+//                               width: 24,
+//                               height: 24,
+//                             ),
+//                             onPressed: () {
+//                               setState(() {
+//                                 _obscurePassword = !_obscurePassword;
+//                               });
+//                             },
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 4),
+//                       Row(
+//                         children: [
+//                           SizedBox(
+//                             width: 24,
+//                             height: 24,
+//                             child: Checkbox(
+//                               value: _isPasswordValid,
+//                               onChanged: null,
+//                               activeColor: Colors.blue,
+//                             ),
+//                           ),
+//                           const SizedBox(width: 8),
+//                           const Text(
+//                             'Kata sandi harus berisi minimal 8 karakter',
+//                             style: TextStyle(fontSize: 12, color: AppColor.gray),
+//                           ),
+//                         ],
+//                       ),
+
+//                       const SizedBox(height: 20),
+
+//                       const Text('Konfirmasi kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _confirmPasswordController,
+//                         obscureText: _obscureConfirmPassword,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                           suffixIcon: IconButton(
+//                             icon: Image.asset(
+//                               _obscureConfirmPassword ? 'assets/hide.png' : 'assets/show.png',
+//                               width: 24,
+//                               height: 24,
+//                             ),
+//                             onPressed: () {
+//                               setState(() {
+//                                 _obscureConfirmPassword = !_obscureConfirmPassword;
+//                               });
+//                             },
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 40),
+
+//                       SizedBox(
+//                         width: double.infinity,
+//                         height: 50,
+//                         child: ElevatedButton(
+//                           onPressed: _isButtonActive
+//                               ? () {
+//                                   context.read<RegisterBloc>().add(
+//                                         RegisterEvent.submitted(
+//                                           name: _nameController.text,
+//                                           email: _emailController.text,
+//                                           password: _passwordController.text,
+//                                           confirmPassword: _confirmPasswordController.text,
+//                                         ),
+//                                       );
+//                                 }
+//                               : null,
+//                           style: ElevatedButton.styleFrom(
+//                             backgroundColor: _isButtonActive ? Colors.blue : Colors.grey,
+//                             shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(12),
+//                             ),
+//                           ),
+//                           child: const Text(
+//                             'Daftar',
+//                             style: TextStyle(
+//                               fontWeight: FontWeight.bold,
+//                               color: Colors.white,
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 24),
+
+//                       Center(
+//                         child: RichText(
+//                           text: TextSpan(
+//                             text: 'Sudah punya akun? ',
+//                             style: const TextStyle(color: Colors.black),
+//                             children: [
+//                               TextSpan(
+//                                 text: 'Masuk',
+//                                 style: const TextStyle(
+//                                     color: Colors.blue,
+//                                     fontWeight: FontWeight.bold),
+//                                 recognizer: TapGestureRecognizer()
+//                                   ..onTap = () {
+//                                     Navigator.pop(context);
+//                                   },
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 32),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+// import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+// import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
+// import 'package:flutter/gestures.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:final_project_pengaduan_masyarakat_sem2/auth/bloc/register/register_bloc.dart';
+
+// class RegisterPage extends StatefulWidget {
+//   const RegisterPage({super.key});
+
+//   @override
+//   State<RegisterPage> createState() => _RegisterPageState();
+// }
+
+// class _RegisterPageState extends State<RegisterPage> {
+//   final TextEditingController _nameController = TextEditingController();
+//   final TextEditingController _emailController = TextEditingController();
+//   final TextEditingController _passwordController = TextEditingController();
+//   final TextEditingController _confirmPasswordController = TextEditingController();
+
+//   bool _obscurePassword = true;
+//   bool _obscureConfirmPassword = true;
+//   bool _isPasswordValid = false;
+//   bool _isButtonActive = false;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _nameController.addListener(_validateForm);
+//     _emailController.addListener(_validateForm);
+//     _passwordController.addListener(_validateForm);
+//     _confirmPasswordController.addListener(_validateForm);
+//     _passwordController.addListener(_validatePassword);
+//   }
+
+//   void _validateForm() {
+//     setState(() {
+//       _isButtonActive = _nameController.text.isNotEmpty &&
+//           _emailController.text.isNotEmpty &&
+//           _passwordController.text.isNotEmpty &&
+//           _confirmPasswordController.text.isNotEmpty;
+//     });
+//   }
+
+//   void _validatePassword() {
+//     setState(() {
+//       _isPasswordValid = _passwordController.text.length >= 8;
+//     });
+//   }
+
+//   @override
+//   void dispose() {
+//     _nameController.dispose();
+//     _emailController.dispose();
+//     _passwordController.dispose();
+//     _confirmPasswordController.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: BlocListener<RegisterBloc, RegisterState>(
+//           listener: (context, state) {
+//             state.whenOrNull(
+//               loading: () => showDialog(
+//                 context: context,
+//                 barrierDismissible: false,
+//                 builder: (_) => const Center(child: CircularProgressIndicator()),
+//               ),
+//               success: () {
+//                 Navigator.pop(context); // close loading
+//                 WidgetsBinding.instance.addPostFrameCallback((_) {
+//                   Navigator.pushReplacement(
+//                     context,
+//                     MaterialPageRoute(builder: (_) => const LoginPage()),
+//                   );
+//                 });
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   const SnackBar(content: Text("Pendaftaran berhasil")),
+//                 );
+//               },
+//               error: (message) {
+//                 Navigator.pop(context); // close loading
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   SnackBar(content: Text(message)),
+//                 );
+//               },
+//             );
+//           },
+//           child: SingleChildScrollView(
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Container(
+//                   width: double.infinity,
+//                   height: 150,
+//                   decoration: const BoxDecoration(
+//                     color: Colors.blue,
+//                     borderRadius: BorderRadius.only(
+//                       bottomRight: Radius.circular(390),
+//                     ),
+//                   ),
+//                   padding: const EdgeInsets.only(top: 60, left: 20),
+//                   alignment: Alignment.topLeft,
+//                   child: Image.asset(
+//                     'assets/Logoo.png',
+//                     width: 111,
+//                     height: 50,
+//                   ),
+//                 ),
+//                 Padding(
+//                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       const Text(
+//                         'Daftar Akun',
+//                         style: TextStyle(
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.bold,
+//                           color: Colors.black,
+//                         ),
+//                       ),
+//                       const SizedBox(height: 24),
+
+//                       const Text('Nama Lengkap', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _nameController,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 20),
+
+//                       const Text('Alamat e-mail', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _emailController,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 20),
+
+//                       const Text('Kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _passwordController,
+//                         obscureText: _obscurePassword,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                           suffixIcon: IconButton(
+//                             icon: Image.asset(
+//                               _obscurePassword ? 'assets/hide.png' : 'assets/show.png',
+//                               width: 24,
+//                               height: 24,
+//                             ),
+//                             onPressed: () {
+//                               setState(() {
+//                                 _obscurePassword = !_obscurePassword;
+//                               });
+//                             },
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 4),
+//                       Row(
+//                         children: [
+//                           SizedBox(
+//                             width: 24,
+//                             height: 24,
+//                             child: Checkbox(
+//                               value: _isPasswordValid,
+//                               onChanged: null,
+//                               activeColor: Colors.blue,
+//                             ),
+//                           ),
+//                           const SizedBox(width: 8),
+//                           const Text(
+//                             'Kata sandi harus berisi minimal 8 karakter',
+//                             style: TextStyle(fontSize: 12, color: AppColor.gray),
+//                           ),
+//                         ],
+//                       ),
+
+//                       const SizedBox(height: 20),
+
+//                       const Text('Konfirmasi kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _confirmPasswordController,
+//                         obscureText: _obscureConfirmPassword,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                           suffixIcon: IconButton(
+//                             icon: Image.asset(
+//                               _obscureConfirmPassword ? 'assets/hide.png' : 'assets/show.png',
+//                               width: 24,
+//                               height: 24,
+//                             ),
+//                             onPressed: () {
+//                               setState(() {
+//                                 _obscureConfirmPassword = !_obscureConfirmPassword;
+//                               });
+//                             },
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 40),
+
+//                       SizedBox(
+//                         width: double.infinity,
+//                         height: 50,
+//                         child: ElevatedButton(
+//                           onPressed: _isButtonActive
+//                               ? () {
+//                                   context.read<RegisterBloc>().add(
+//                                         RegisterEvent.submitted(
+//                                           name: _nameController.text,
+//                                           email: _emailController.text,
+//                                           password: _passwordController.text,
+//                                           confirmPassword: _confirmPasswordController.text,
+//                                         ),
+//                                       );
+//                                 }
+//                               : null,
+//                           style: ElevatedButton.styleFrom(
+//                             backgroundColor: _isButtonActive ? Colors.blue : Colors.grey,
+//                             shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(12),
+//                             ),
+//                           ),
+//                           child: const Text(
+//                             'Daftar',
+//                             style: TextStyle(
+//                               fontWeight: FontWeight.bold,
+//                               color: Colors.white,
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+
+//                       const SizedBox(height: 24),
+
+//                       Center(
+//                         child: RichText(
+//                           text: TextSpan(
+//                             text: 'Sudah punya akun? ',
+//                             style: const TextStyle(color: Colors.black),
+//                             children: [
+//                               TextSpan(
+//                                 text: 'Masuk',
+//                                 style: const TextStyle(
+//                                     color: Colors.blue,
+//                                     fontWeight: FontWeight.bold),
+//                                 recognizer: TapGestureRecognizer()
+//                                   ..onTap = () {
+//                                     Navigator.pop(context);
+//                                   },
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 32),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+// import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+// import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
+// import 'package:flutter/gestures.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:final_project_pengaduan_masyarakat_sem2/auth/bloc/register/register_bloc.dart';
+
+// class RegisterPage extends StatefulWidget {
+//   const RegisterPage({super.key});
+
+//   @override
+//   State<RegisterPage> createState() => _RegisterPageState();
+// }
+
+// class _RegisterPageState extends State<RegisterPage> {
+//   final TextEditingController _nameController = TextEditingController();
+//   final TextEditingController _emailController = TextEditingController();
+//   final TextEditingController _passwordController = TextEditingController();
+//   final TextEditingController _confirmPasswordController = TextEditingController();
+
+//   bool _obscurePassword = true;
+//   bool _obscureConfirmPassword = true;
+//   bool _isPasswordValid = false;
+//   bool _isButtonActive = false;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _nameController.addListener(_validateForm);
+//     _emailController.addListener(_validateForm);
+//     _passwordController.addListener(_validateForm);
+//     _confirmPasswordController.addListener(_validateForm);
+//     _passwordController.addListener(_validatePassword);
+//   }
+
+//   void _validateForm() {
+//     setState(() {
+//       _isButtonActive = _nameController.text.isNotEmpty &&
+//           _emailController.text.isNotEmpty &&
+//           _passwordController.text.isNotEmpty &&
+//           _confirmPasswordController.text.isNotEmpty;
+//     });
+//   }
+
+//   void _validatePassword() {
+//     setState(() {
+//       _isPasswordValid = _passwordController.text.length >= 8;
+//     });
+//   }
+
+//   @override
+//   void dispose() {
+//     _nameController.dispose();
+//     _emailController.dispose();
+//     _passwordController.dispose();
+//     _confirmPasswordController.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: BlocListener<RegisterBloc, RegisterState>(
+//           listener: (context, state) {
+//             state.whenOrNull(
+//               loading: () => showDialog(
+//                 context: context,
+//                 barrierDismissible: false,
+//                 builder: (_) => const Center(child: CircularProgressIndicator()),
+//               ),
+//               success: () {
+//                 Navigator.pop(context); // close loading
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   const SnackBar(content: Text("Pendaftaran berhasil")),
+//                 );
+//                 Future.delayed(const Duration(seconds: 1), () {
+//                   Navigator.pushReplacement(
+//                     context,
+//                     MaterialPageRoute(builder: (_) => const LoginPage()),
+//                   );
+//                 });
+//               },
+//               error: (message) {
+//                 Navigator.pop(context); // close loading
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   SnackBar(content: Text(message)),
+//                 );
+//               },
+//             );
+//           },
+//           child: SingleChildScrollView(
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Container(
+//                   width: double.infinity,
+//                   height: 150,
+//                   decoration: const BoxDecoration(
+//                     color: Colors.blue,
+//                     borderRadius: BorderRadius.only(
+//                       bottomRight: Radius.circular(390),
+//                     ),
+//                   ),
+//                   padding: const EdgeInsets.only(top: 60, left: 20),
+//                   alignment: Alignment.topLeft,
+//                   child: Image.asset(
+//                     'assets/Logoo.png',
+//                     width: 111,
+//                     height: 50,
+//                   ),
+//                 ),
+//                 Padding(
+//                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+//                   child: Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       const Text(
+//                         'Daftar Akun',
+//                         style: TextStyle(
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.bold,
+//                           color: Colors.black,
+//                         ),
+//                       ),
+//                       const SizedBox(height: 24),
+//                       const Text('Nama Lengkap', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _nameController,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 20),
+//                       const Text('Alamat e-mail', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _emailController,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 20),
+//                       const Text('Kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _passwordController,
+//                         obscureText: _obscurePassword,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                           suffixIcon: IconButton(
+//                             icon: Image.asset(
+//                               _obscurePassword ? 'assets/hide.png' : 'assets/show.png',
+//                               width: 24,
+//                               height: 24,
+//                             ),
+//                             onPressed: () {
+//                               setState(() {
+//                                 _obscurePassword = !_obscurePassword;
+//                               });
+//                             },
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 4),
+//                       Row(
+//                         children: [
+//                           SizedBox(
+//                             width: 24,
+//                             height: 24,
+//                             child: Checkbox(
+//                               value: _isPasswordValid,
+//                               onChanged: null,
+//                               activeColor: Colors.blue,
+//                             ),
+//                           ),
+//                           const SizedBox(width: 8),
+//                           const Text(
+//                             'Kata sandi harus berisi minimal 8 karakter',
+//                             style: TextStyle(fontSize: 12, color: AppColor.gray),
+//                           ),
+//                         ],
+//                       ),
+//                       const SizedBox(height: 20),
+//                       const Text('Konfirmasi kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+//                       const SizedBox(height: 8),
+//                       TextField(
+//                         controller: _confirmPasswordController,
+//                         obscureText: _obscureConfirmPassword,
+//                         decoration: InputDecoration(
+//                           border: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                           ),
+//                           focusedBorder: OutlineInputBorder(
+//                             borderRadius: BorderRadius.circular(12),
+//                             borderSide: const BorderSide(color: Colors.blue, width: 2),
+//                           ),
+//                           suffixIcon: IconButton(
+//                             icon: Image.asset(
+//                               _obscureConfirmPassword ? 'assets/hide.png' : 'assets/show.png',
+//                               width: 24,
+//                               height: 24,
+//                             ),
+//                             onPressed: () {
+//                               setState(() {
+//                                 _obscureConfirmPassword = !_obscureConfirmPassword;
+//                               });
+//                             },
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 40),
+//                       SizedBox(
+//                         width: double.infinity,
+//                         height: 50,
+//                         child: ElevatedButton(
+//                           onPressed: _isButtonActive
+//                               ? () {
+//                                   context.read<RegisterBloc>().add(
+//                                         RegisterEvent.submitted(
+//                                           name: _nameController.text,
+//                                           email: _emailController.text,
+//                                           password: _passwordController.text,
+//                                           confirmPassword: _confirmPasswordController.text,
+//                                         ),
+//                                       );
+//                                 }
+//                               : null,
+//                           style: ElevatedButton.styleFrom(
+//                             backgroundColor: _isButtonActive ? Colors.blue : Colors.grey,
+//                             shape: RoundedRectangleBorder(
+//                               borderRadius: BorderRadius.circular(12),
+//                             ),
+//                           ),
+//                           child: const Text(
+//                             'Daftar',
+//                             style: TextStyle(
+//                               fontWeight: FontWeight.bold,
+//                               color: Colors.white,
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 24),
+//                       Center(
+//                         child: RichText(
+//                           text: TextSpan(
+//                             text: 'Sudah punya akun? ',
+//                             style: const TextStyle(color: Colors.black),
+//                             children: [
+//                               TextSpan(
+//                                 text: 'Masuk',
+//                                 style: const TextStyle(
+//                                     color: Colors.blue,
+//                                     fontWeight: FontWeight.bold),
+//                                 recognizer: TapGestureRecognizer()
+//                                   ..onTap = () {
+//                                     Navigator.pop(context);
+//                                   },
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       ),
+//                       const SizedBox(height: 32),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/auth/bloc/register/register_bloc.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -13,402 +1492,280 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
+  bool _isPasswordValid = false;
+  bool _isButtonActive = false;
 
-  OutlineInputBorder _inputBorder(Color color) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: color),
-    );
+  @override
+  void initState() {
+    super.initState();
+    _nameController.addListener(_validateForm);
+    _emailController.addListener(_validateForm);
+    _passwordController.addListener(_validateForm);
+    _confirmPasswordController.addListener(_validateForm);
+    _passwordController.addListener(_validatePassword);
+  }
+
+  void _validateForm() {
+    setState(() {
+      _isButtonActive = _nameController.text.isNotEmpty &&
+          _emailController.text.isNotEmpty &&
+          _passwordController.text.isNotEmpty &&
+          _confirmPasswordController.text.isNotEmpty;
+    });
+  }
+
+  void _validatePassword() {
+    setState(() {
+      _isPasswordValid = _passwordController.text.length >= 8;
+    });
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 54, vertical: 40),
-        child: ListView(
-          children: [
-            const Text(
-              'Daftar Akun',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+      body: SafeArea(
+        child: BlocListener<RegisterBloc, RegisterState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              loading: () => showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (_) => const Center(child: CircularProgressIndicator()),
               ),
-            ),
-            const SizedBox(height: 40),
-
-            // Nama Lengkap
-            const Text('Nama Lengkap'),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _nameController,
-              decoration: InputDecoration(
-                border: _inputBorder(Colors.grey),
-                focusedBorder: _inputBorder(Colors.blue),
-              ),
-            ),
-            const SizedBox(height: 40),
-
-            // Email
-            const Text('Alamat e-mail'),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                border: _inputBorder(Colors.grey),
-                focusedBorder: _inputBorder(Colors.blue),
-              ),
-            ),
-            const SizedBox(height: 40),
-            // Kata sandi
-            const Text('Kata sandi'),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _passwordController,
-              obscureText: _obscurePassword,
-              decoration: InputDecoration(
-                border: _inputBorder(Colors.grey),
-                focusedBorder: _inputBorder(Colors.blue),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _obscurePassword = !_obscurePassword;
-                    });
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(height: 40),
-
-            // Konfirmasi kata sandi
-            const Text('Konfirmasi kata sandi'),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _confirmPasswordController,
-              obscureText: _obscureConfirmPassword,
-              decoration: InputDecoration(
-                border: _inputBorder(Colors.grey),
-                focusedBorder: _inputBorder(Colors.blue),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    _obscureConfirmPassword
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _obscureConfirmPassword = !_obscureConfirmPassword;
-                    });
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(height: 45),
-
-            // Tombol Daftar
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () {
-                  // TODO: Tambahkan logika pendaftaran
-                },
-                child: const Text(
-                  'Daftar',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 50),
-
-            // Sudah punya akun? Masuk
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  text: 'Sudah punya akun? ',
-                  style: const TextStyle(color: Colors.black),
-                  children: [
-                    TextSpan(
-                      text: 'Masuk',
-                      style: const TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()),
-                          );
-                        },
+              success: () {
+                Navigator.pop(context); // close loading
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Pendaftaran berhasil")),
+                );
+                Future.delayed(const Duration(seconds: 1), () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginPage()),
+                  );
+                });
+              },
+              error: (message) {
+                Navigator.pop(context); // close loading
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(message)),
+                );
+              },
+            );
+          },
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 150,
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(390),
                     ),
-                  ],
+                  ),
+                  padding: const EdgeInsets.only(top: 60, left: 20),
+                  alignment: Alignment.topLeft,
+                  child: Image.asset(
+                    'assets/Logoo.png',
+                    width: 111,
+                    height: 50,
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Daftar Akun',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      const Text('Nama Lengkap', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(color: Colors.blue, width: 2),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text('Alamat e-mail', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(color: Colors.blue, width: 2),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text('Kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: _passwordController,
+                        obscureText: _obscurePassword,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(color: Colors.blue, width: 2),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Image.asset(
+                              _obscurePassword ? 'assets/hide.png' : 'assets/show.png',
+                              width: 24,
+                              height: 24,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscurePassword = !_obscurePassword;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: Checkbox(
+                              value: _isPasswordValid,
+                              onChanged: null,
+                              activeColor: Colors.blue,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          const Text(
+                            'Kata sandi harus berisi minimal 8 karakter',
+                            style: TextStyle(fontSize: 12, color: AppColor.gray),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      const Text('Konfirmasi kata sandi', style: TextStyle(fontSize: 14, color: AppColor.gray)),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: _confirmPasswordController,
+                        obscureText: _obscureConfirmPassword,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(color: Colors.blue, width: 2),
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Image.asset(
+                              _obscureConfirmPassword ? 'assets/hide.png' : 'assets/show.png',
+                              width: 24,
+                              height: 24,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscureConfirmPassword = !_obscureConfirmPassword;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 40),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: _isButtonActive
+                              ? () {
+                                  context.read<RegisterBloc>().add(
+                                        RegisterEvent.submitted(
+                                          name: _nameController.text,
+                                          email: _emailController.text,
+                                          password: _passwordController.text,
+                                          confirmPassword: _confirmPasswordController.text,
+                                        ),
+                                      );
+                                }
+                              : null,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: _isButtonActive ? Colors.blue : Colors.grey,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: const Text(
+                            'Daftar',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      Center(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Sudah punya akun? ',
+                            style: const TextStyle(color: Colors.black),
+                            children: [
+                              TextSpan(
+                                text: 'Masuk',
+                                style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.pop(context);
+                                  },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 32),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
-
-// class RegisterPage extends StatelessWidget {
-//   final TextEditingController firstNameController = TextEditingController();
-//   final TextEditingController lastNameController = TextEditingController();
-//   final TextEditingController emailController = TextEditingController();
-//   final TextEditingController passwordController = TextEditingController();
-//   final TextEditingController confirmPasswordController =
-//       TextEditingController();
-
-//   final ValueNotifier<bool> obscurePassword = ValueNotifier(true);
-//   final ValueNotifier<bool> obscureConfirmPassword = ValueNotifier(true);
-//   final ValueNotifier<bool> isFormValid = ValueNotifier(false);
-//   final ValueNotifier<bool> isButtonPressed = ValueNotifier(false);
-
-//   RegisterPage({super.key}) {
-//     firstNameController.addListener(_validateForm);
-//     lastNameController.addListener(_validateForm);
-//     emailController.addListener(_validateForm);
-//     passwordController.addListener(_validateForm);
-//     confirmPasswordController.addListener(_validateForm);
-//   }
-
-//   void _validateForm() {
-//     isFormValid.value = firstNameController.text.isNotEmpty &&
-//         lastNameController.text.isNotEmpty &&
-//         emailController.text.isNotEmpty &&
-//         passwordController.text.isNotEmpty &&
-//         confirmPasswordController.text.isNotEmpty;
-//   }
-
-//   OutlineInputBorder _borderStyle({Color color = Colors.black54}) {
-//     return OutlineInputBorder(
-//       borderRadius: BorderRadius.circular(8),
-//       borderSide: BorderSide(color: color),
-//     );
-//   }
-
-//   Widget _buildLabel(String text) {
-//     return Padding(
-//       padding: const EdgeInsets.only(bottom: 6),
-//       child: Align(
-//         alignment: Alignment.centerLeft,
-//         child: Text(
-//           text,
-//           style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//    appBar: AppBar(
-//         leading: BackButton(color: Colors.black),
-//         centerTitle: false,
-//         title: const Text(
-//           'Daftar Akun',
-//           style: TextStyle(color: Colors.black),
-//         ),
-//         backgroundColor: Colors.white,
-//         elevation: 0,
-//       ),
-//       backgroundColor: Colors.white,
-//       body: Padding(
-//         padding: const EdgeInsets.all(20),
-//         child: Column(
-//           children: [
-//             // Nama Depan & Belakang
-//             Row(
-//               children: [
-//                 Expanded(
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       _buildLabel("Nama depan"),
-//                       TextField(
-//                         controller: firstNameController,
-//                         decoration: InputDecoration(
-//                           border: _borderStyle(),
-//                           enabledBorder: _borderStyle(),
-//                           focusedBorder:
-//                               _borderStyle(color: AppColor.brightBlue),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//                 const SizedBox(width: 12),
-//                 Expanded(
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       _buildLabel("Nama belakang"),
-//                       TextField(
-//                         controller: lastNameController,
-//                         decoration: InputDecoration(
-//                           border: _borderStyle(),
-//                           enabledBorder: _borderStyle(),
-//                           focusedBorder:
-//                               _borderStyle(color: AppColor.brightBlue),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             const SizedBox(height: 16),
-
-//             // Email
-//             Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 _buildLabel("Alamat e-mail"),
-//                 TextField(
-//                   controller: emailController,
-//                   decoration: InputDecoration(
-//                     border: _borderStyle(),
-//                     enabledBorder: _borderStyle(),
-//                     focusedBorder: _borderStyle(color: AppColor.brightBlue),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             const SizedBox(height: 16),
-
-//             // Kata Sandi
-//             Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 _buildLabel("Kata sandi"),
-//                 ValueListenableBuilder<bool>(
-//                   valueListenable: obscurePassword,
-//                   builder: (context, isObscured, _) {
-//                     return TextField(
-//                       controller: passwordController,
-//                       obscureText: isObscured,
-//                       decoration: InputDecoration(
-//                         border: _borderStyle(),
-//                         enabledBorder: _borderStyle(),
-//                         focusedBorder: _borderStyle(color: AppColor.brightBlue),
-//                         suffixIcon: IconButton(
-//                           icon: Icon(
-//                             isObscured
-//                                 ? Icons.visibility_off
-//                                 : Icons.visibility,
-//                           ),
-//                           onPressed: () => obscurePassword.value = !isObscured,
-//                         ),
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ],
-//             ),
-//             const SizedBox(height: 16),
-
-//             // Konfirmasi Sandi
-//             Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 _buildLabel("Konfirmasi kata sandi"),
-//                 ValueListenableBuilder<bool>(
-//                   valueListenable: obscureConfirmPassword,
-//                   builder: (context, isObscured, _) {
-//                     return TextField(
-//                       controller: confirmPasswordController,
-//                       obscureText: isObscured,
-//                       decoration: InputDecoration(
-//                         border: _borderStyle(),
-//                         enabledBorder: _borderStyle(),
-//                         focusedBorder: _borderStyle(color: AppColor.brightBlue),
-//                         suffixIcon: IconButton(
-//                           icon: Icon(
-//                             isObscured
-//                                 ? Icons.visibility_off
-//                                 : Icons.visibility,
-//                           ),
-//                           onPressed: () =>
-//                               obscureConfirmPassword.value = !isObscured,
-//                         ),
-//                       ),
-//                     );
-//                   },
-//                 ),
-//               ],
-//             ),
-
-//             const Spacer(),
-
-//             // Tombol Masuk
-//             ValueListenableBuilder<bool>(
-//               valueListenable: isFormValid,
-//               builder: (context, isValid, _) {
-//                 return ValueListenableBuilder<bool>(
-//                   valueListenable: isButtonPressed,
-//                   builder: (context, isPressed, _) {
-//                     return SizedBox(
-//                       width: double.infinity,
-//                       height: 50,
-//                       child: ElevatedButton(
-//                         onPressed: isValid
-//                             ? () {
-//                                 isButtonPressed.value = true;
-//                                 print("Register: ${emailController.text}");
-//                                 // reset warna tombol (opsional)
-//                                 Future.delayed(
-//                                     const Duration(milliseconds: 300), () {
-//                                   isButtonPressed.value = false;
-//                                 });
-//                               }
-//                             : null,
-//                         style: ElevatedButton.styleFrom(
-//                           backgroundColor: isValid
-//                               ? (isPressed ? AppColor.brightBlue : Colors.black)
-//                               : AppColor.gray,
-//                           shape: RoundedRectangleBorder(
-//                             borderRadius: BorderRadius.circular(10),
-//                           ),
-//                           elevation: 0,
-//                         ),
-//                         child: const Text(
-//                           "Masuk",
-//                           style: TextStyle(color: Colors.white),
-//                         ),
-//                       ),
-//                     );
-//                   },
-//                 );
-//               },
-//             ),
-
-//             const SizedBox(height: 30),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:final_project_pengaduan_masyarakat_sem2/intro/onboarding1.dart';
 import 'package:flutter/material.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/dataSources/auth_local_datasource.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/pages/main_pages.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,39 +16,42 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late AnimationController _imageScaleController;
   late Animation<double> _imageScaleAnimation;
-
   bool _startCircularReveal = false;
+  bool _checkLoginFinished = false;
+  Widget _nextPage = const LoginPage();
 
   @override
   void initState() {
     super.initState();
-
     _imageScaleController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
-
     _imageScaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _imageScaleController, curve: Curves.easeOutBack),
     );
-
-    _startSequence();
+    _startAnimationAndLoginCheck();
   }
 
-  Future<void> _startSequence() async {
+  Future<void> _startAnimationAndLoginCheck() async {
     await Future.delayed(const Duration(milliseconds: 300));
     _imageScaleController.forward();
-
     await Future.delayed(const Duration(milliseconds: 1500));
     setState(() {
       _startCircularReveal = true;
     });
 
+    final isLoggedIn = await AuthLocalDatasource().isLogin();
+    if (isLoggedIn) {
+      _nextPage = const MainPage();
+    } else {
+      _nextPage = const LoginPage();
+    }
+
     await Future.delayed(const Duration(milliseconds: 1800));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const Onboarding1()),
-    );
+    setState(() {
+      _checkLoginFinished = true;
+    });
   }
 
   @override
@@ -59,12 +64,15 @@ class _SplashScreenState extends State<SplashScreen>
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    if (_checkLoginFinished) {
+      return _nextPage;
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         alignment: Alignment.center,
         children: [
-          // Transisi sedot lingkaran dari tengah
           if (_startCircularReveal)
             Positioned.fill(
               child: TweenAnimationBuilder<double>(
@@ -78,8 +86,6 @@ class _SplashScreenState extends State<SplashScreen>
                 },
               ),
             ),
-
-          // Logo SIGAP selalu di atas dengan transisi warna
           Center(
             child: ScaleTransition(
               scale: _imageScaleAnimation,
@@ -97,10 +103,8 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-// Clipper untuk animasi transisi lingkaran dari tengah
 class CircleRevealClipper extends CustomClipper<Path> {
   final double radius;
-
   CircleRevealClipper(this.radius);
 
   @override
