@@ -1,4 +1,4 @@
-import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/constants/color.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: double.infinity,
           height: 150,
           decoration: const BoxDecoration(
-            color: Colors.blue,
+            color: AppColor.primary,
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(390),
             ),
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.only(top: 60, left: 20),
           alignment: Alignment.topLeft,
           child: Image.asset(
-            'assets/Logoo.png',
+            'assets/images/Logoo.png', // Gambar logo SIGAP
             width: 111,
             height: 50,
           ),

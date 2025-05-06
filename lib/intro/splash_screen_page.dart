@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/dataSources/auth_local_datasource.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/intro/login_page.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/pages/main_pages.dart';
-import 'package:final_project_pengaduan_masyarakat_sem2/constant/color.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/constants/color.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
                 builder: (context, radius, child) {
                   return ClipPath(
                     clipper: CircleRevealClipper(radius),
-                    child: Container(color: AppColor.dodgerBlue),
+                    child: Container(color: AppColor.primary),
                   );
                 },
               ),
@@ -90,10 +90,8 @@ class _SplashScreenState extends State<SplashScreen>
             child: ScaleTransition(
               scale: _imageScaleAnimation,
               child: Image.asset(
-                'assets/Logo.png',
-                width: 200,
-                color:
-                    _startCircularReveal ? Colors.white : AppColor.dodgerBlue,
+                'assets/images/Logo.png',
+                color: _startCircularReveal ? Colors.white : AppColor.primary,
               ),
             ),
           ),
