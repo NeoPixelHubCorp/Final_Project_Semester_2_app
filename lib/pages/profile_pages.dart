@@ -1,4 +1,8 @@
+import 'package:final_project_pengaduan_masyarakat_sem2/components/buttons.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/constants/color.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/dataSources/auth_local_datasource.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/extentions/build_context_ext.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/intro/splash_screen_page.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/pages/kebijakan_privasi_pages.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/pages/syarat_ketentuan_pages.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/pages/tentang_sigap_pages.dart';
@@ -56,9 +60,13 @@ class ProfilePages extends StatelessWidget {
                   const SizedBox(width: 10),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.of(context).pop(); // Tutup modal
 
+                        // Hapus data autentikasi
+                        await AuthLocalDatasource().removeAuthData();
+
+                        // Tampilkan snackbar
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Berhasil keluar dari akun'),
@@ -66,16 +74,12 @@ class ProfilePages extends StatelessWidget {
                           ),
                         );
 
-                        Future.delayed(const Duration(milliseconds: 500), () {
-                          Navigator.pushReplacementNamed(context, '/login');
-                        });
+                        // Navigasi ke SplashScreen
+                        context.pushReplacement(const SplashScreen());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
-                        side: const BorderSide(
-                          color: Colors.red, // Warna border
-                          width: 1.0, // Ketebalan border
-                        ),
+                        side: const BorderSide(color: Colors.red, width: 1.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),

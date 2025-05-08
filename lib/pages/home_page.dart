@@ -109,30 +109,37 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
-          const SizedBox(height: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Banner
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors.amber[300],
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              const SizedBox(height: 25),
-            ],
+          // === BANNER SLIDABLE ===
+          SizedBox(
+            height: 250,
+            child: PageView.builder(
+              itemCount: 3, // Ganti sesuai jumlah banner
+              padEnds: true,
+              controller: PageController(viewportFraction: 0.9),
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/images/onboardingg.png'), // Ganti dinamis jika perlu
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
+
           const SizedBox(height: 25),
 
           // === Judul Section ===
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               'Laporan Terbaru',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ),
 

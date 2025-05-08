@@ -28,6 +28,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/Logoo.png
   AssetGenImage get logoo => const AssetGenImage('assets/images/Logoo.png');
 
+  /// File path: assets/images/loading.png
+  AssetGenImage get loading => const AssetGenImage('assets/images/loading.png');
+
   /// File path: assets/images/notNotification.png
   AssetGenImage get notNotification =>
       const AssetGenImage('assets/images/notNotification.png');
@@ -48,6 +51,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
     logo,
     logoo,
+    loading,
     notNotification,
     onboarding,
     onboardingg,
@@ -61,8 +65,20 @@ class $AssetsIconsNavGen {
   /// File path: assets/icons/nav/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/nav/home.png');
 
+  /// File path: assets/icons/nav/homeline.png
+  AssetGenImage get homeline =>
+      const AssetGenImage('assets/icons/nav/homeline.png');
+
+  /// File path: assets/icons/nav/laporanklik.png
+  AssetGenImage get laporanklik =>
+      const AssetGenImage('assets/icons/nav/laporanklik.png');
+
   /// File path: assets/icons/nav/news.png
   AssetGenImage get news => const AssetGenImage('assets/icons/nav/news.png');
+
+  /// File path: assets/icons/nav/newsfill.png
+  AssetGenImage get newsfill =>
+      const AssetGenImage('assets/icons/nav/newsfill.png');
 
   /// File path: assets/icons/nav/plus (2).png
   AssetGenImage get plus2 =>
@@ -79,8 +95,23 @@ class $AssetsIconsNavGen {
   AssetGenImage get report =>
       const AssetGenImage('assets/icons/nav/report.png');
 
+  /// File path: assets/icons/nav/userfill.png
+  AssetGenImage get userfill =>
+      const AssetGenImage('assets/icons/nav/userfill.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [home, news, plus2, plus, profil, report];
+  List<AssetGenImage> get values => [
+    home,
+    homeline,
+    laporanklik,
+    news,
+    newsfill,
+    plus2,
+    plus,
+    profil,
+    report,
+    userfill,
+  ];
 }
 
 class $AssetsIconsProfileGen {

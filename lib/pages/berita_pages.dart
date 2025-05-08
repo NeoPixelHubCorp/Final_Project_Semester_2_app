@@ -1,16 +1,29 @@
-import 'package:final_project_pengaduan_masyarakat_sem2/widget/berita_terbaru_card.dart';
 import 'package:final_project_pengaduan_masyarakat_sem2/widget/berita_trending_card.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/widget/berita_terbaru_card.dart';
 import 'package:flutter/material.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/dataSources/artikel_remote_newsApi.dart';
+import 'package:final_project_pengaduan_masyarakat_sem2/response/artikel_response_model.dart';
+ // pastikan file ini ada
 
-class BeritaPages extends StatefulWidget {
-  const BeritaPages({super.key});
+class BeritaPage extends StatefulWidget {
+  const BeritaPage({super.key});
 
   @override
-  State<BeritaPages> createState() => _BeritaPagesState();
+  State<BeritaPage> createState() => _BeritaPageState();
 }
 
-class _BeritaPagesState extends State<BeritaPages> {
-  bool isTerbaruSelected = true;
+class _BeritaPageState extends State<BeritaPage> {
+  late Future<List<Article>> futureTrendingArticles;
+  late Future<List<Article>> futureLatestArticles;
+
+  bool isTerbaruSelected = true; // ✅ tambahkan ini untuk toggle
+
+  @override
+  void initState() {
+    super.initState();
+    futureTrendingArticles = ArtikelRemoteNewsapi().articleByKeyword("trending");
+    futureLatestArticles = ArtikelRemoteNewsapi().articleByKeyword("latest");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +60,6 @@ class _BeritaPagesState extends State<BeritaPages> {
               const SizedBox(height: 16),
               Row(
                 children: [
-                  // Tombol Terbaru
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -73,7 +85,6 @@ class _BeritaPagesState extends State<BeritaPages> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  // Tombol Trending
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -101,11 +112,10 @@ class _BeritaPagesState extends State<BeritaPages> {
                 ],
               ),
               const SizedBox(height: 20),
-              // Konten berdasarkan pilihan
               Expanded(
                 child: isTerbaruSelected
-                    ? const BeritaTerbaruCard() // widget dari file berita_terbaru_card.dart
-                    : const BeritaTrendingCard(), // widget dari file berita_trending_card.dart
+                    ? BeritaTerbaruCard(futureArticles: futureLatestArticles)
+                    : BeritaTrendingCard(futureArticles: futureTrendingArticles),
               ),
             ],
           ),

@@ -17,8 +17,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _pages = [
     HomePage(),
     LaporanPage(),
-    LaporanBaruPage(),
-    BeritaPages(),
+    BeritaPage(),
     ProfilePages()
   ];
 
@@ -44,12 +43,19 @@ class _MainPageState extends State<MainPage> {
         width: 80,
         height: 80,
         child: FloatingActionButton(
-          onPressed: _onFabPressed,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LaporanBaruPage(),
+              ),
+            );
+          },
           backgroundColor: AppColor.primary,
           shape: const CircleBorder(),
           elevation: 4,
-          child: Icon(
-            _selectedIndex == 2 ? Icons.note_add : Icons.note_add_outlined,
+          child: const Icon(
+            Icons.note_add_outlined,
             size: 32,
             color: Colors.white,
           ),
@@ -82,13 +88,13 @@ class _MainPageState extends State<MainPage> {
                 activeIcon: Icons.article,
                 inactiveIcon: Icons.article_outlined,
                 label: "Berita",
-                index: 3,
+                index: 2,
               ),
               _buildNavItem(
                 activeIcon: Icons.person,
                 inactiveIcon: Icons.person_outline,
                 label: "Profil",
-                index: 4,
+                index: 3,
               ),
             ],
           ),
